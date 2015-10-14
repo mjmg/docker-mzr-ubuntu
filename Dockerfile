@@ -1,14 +1,19 @@
 ## start with the Docker latest Ubuntu-based image
 FROM ubuntu:latest
 
+## Add repo for upstream R
+RUN sh -c 'echo "deb http://cran.rstudio.com/bin/linux/ubuntu trusty/" >> /etc/apt/sources.list' \
+	&& gpg --keyserver keyserver.ubuntu.com --recv-key E084DAB9 \ 
+	&& gpg -a --export E084DAB9 | sudo apt-key add -
+
 ## Remain current
 RUN apt-get update -qq \
 	&& apt-get dist-upgrade -y
 
 RUN apt-get update -qq \
 	&& apt-get install  -y  \
-    curl \
-		libnetcdf-dev 
+    	curl \
+	libnetcdf-dev 
 
 RUN apt-get install  -y  \
   r-base 
