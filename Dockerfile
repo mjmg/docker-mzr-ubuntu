@@ -21,6 +21,8 @@ RUN apt-get update -qq \
 RUN apt-get install  -y  \
   r-base r-base-dev
 
+## Check free memory on build host to troubleshoot build errors
+RUN free -m && free -mh
   
 # Setup default cran repo
 RUN echo "r <- getOption('repos'); r['CRAN'] <- 'http://cran.us.r-project.org'; options(repos = r);" > ~/.Rprofile
