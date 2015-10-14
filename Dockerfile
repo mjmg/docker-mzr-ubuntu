@@ -11,7 +11,7 @@ RUN apt-get update -qq \
 		libnetcdf-dev 
 
 RUN apt-get install  -y  \
-  R
+  r-base
   
 # Setup default cran repo
 RUN echo "r <- getOption('repos'); r['CRAN'] <- 'http://cran.us.r-project.org'; options(repos = r);" > ~/.Rprofile
