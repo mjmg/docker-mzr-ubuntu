@@ -10,16 +10,17 @@ RUN sh -c 'echo "deb http://cran.rstudio.com/bin/linux/ubuntu trusty/" >> /etc/a
 RUN apt-get update -qq \
 	&& apt-get dist-upgrade -y
 
+## Intall build dependencies
 RUN apt-get update -qq \
 	&& apt-get install  -y  \
     	curl \
+    	netcdf-bin \
 	libnetcdf-dev 
 
+## Install R
 RUN apt-get install  -y  \
-  r-base 
-  
-RUN apt-get install  -y  \
-  r-base-dev
+  r-base r-base-dev
+
   
 # Setup default cran repo
 RUN echo "r <- getOption('repos'); r['CRAN'] <- 'http://cran.us.r-project.org'; options(repos = r);" > ~/.Rprofile
