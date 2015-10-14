@@ -20,6 +20,6 @@ RUN apt-get install  -y  \
 RUN echo "r <- getOption('repos'); r['CRAN'] <- 'http://cran.us.r-project.org'; options(repos = r);" > ~/.Rprofile
 
 # This installs other R packages under Bioconductor
-RUN Rscript -e "source('https://bioconductor.org/biocLite.R'); biocLite('mzR')"
+#RUN Rscript -e "source('https://bioconductor.org/biocLite.R'); biocLite('mzR')"
 
 CMD "/bin/bash"
